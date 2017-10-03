@@ -1,0 +1,12 @@
+'use strict'
+var express = require("express"),
+app = express(),
+userModel = require('../../models/user/user'),
+pool = require('../../../config/config/connection'),
+bcrypt = require('bcrypt'),
+async = require('async');
+
+
+exports.showDashboard = function (req,res,next){
+		res.render("./user/dashboard.html"); 
+}

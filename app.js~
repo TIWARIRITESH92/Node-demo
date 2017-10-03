@@ -1,0 +1,119 @@
+'use strict'
+var express = require('express'),
+        app = express(),
+        bodyParser = require('body-parser'),
+        validator = require('express-validator'),
+        path = require('path'),
+        nofavicon = require("express-no-favicons"),
+        cookieParser = require('cookie-parser'),
+        session = require('express-session'),
+        stripe = require('stripe')('sk_test_Uph5eiRxLO65PInSKd3YW94r'),
+        csrf = require('csurf'),
+        helmet = require('helmet'),
+        colors = require('colors'),
+        flash = require('express-flash'),
+        pg = require('pg'),
+        ejs = require('ejs'),
+        bcrypt = require('bcrypt'),
+        config = require('./config/config'),
+        connection = require('./config/config/connection'),
+        nodemailer = require('nodemailer'),
+        frontRouter = require('./routes/front_routes'),
+        adminRouter = require('./routes/admin_routes'),
+        dotenv = require("dotenv").config();
+
+
+/*** Common middleware for routing ***/
+function initCommonMiddleware() {
+    app.use(bodyParser.urlencoded({extended: false}));
+    app.use(bodyParser.json());
+    app.use(helmet.noCache());
+    app.use(cookieParser());
+    app.use(validator());
+    app.use(session({
+        secret: "Test#@#@4",
+        proxy: true,
+        resave: true,
+        saveUninitialized: true,
+        cookie: {maxAge: 60000 * 36}
+    }));
+    /*** use csrf token ****/
+    app.use(flash());
+    app.use(nofavicon());
+    /** Routes use for front and admin**/
+    app.set('views', path.join(__dirname, '/resources/views'));
+    app.use('/assets', express.static(path.join(__dirname, 'resources/assets')));
+    app.engine('html', require('ejs').renderFile);
+    app.set('view engine', 'ejs');
+    app.use(function (req, res, next) {
+        res.locals.url = req.originalUrl;
+        res.locals.user = req.session.user;
+        next();
+    });
+
+    app.use("/", frontRouter);
+    app.use("/admin", adminRouter);
+
+}
+
+/** Error handling ****/
+function initErrorHandle() {
+    //// development enviorment error handling
+    if (app.get('env') == 'development') {
+        app.use(function (err, req, res, next) {
+            res.status(500).send({status: 500, message: err.message, type: 'development-error'});
+        });
+    }
+
+    if (app.get('env') == 'production') {
+        app.use(function (err, req, res, next) {
+            console.error(err);
+            res.status(500).send({status: 500, message: 'Something went wrong'});
+        });
+    }
+
+
+}
+
+/** Configuration file load and init ****/
+function initConfiguration(callback) {
+
+    var postgresUserName = config.postgres.username,
+            postgresPassword = config.postgres.password,
+            postgresUrl = config.postgres.url,
+            postgresDatabase = config.postgres.database;
+
+    // connection string for postgres
+    var postgressConfigString = 'postgres://' + postgresUserName + ':' + postgresPassword + '@' + postgresUrl + '/' + postgresDatabase;
+    var client = new pg.Client(postgressConfigString);
+    client.connect(function (err, client, done) {
+        if (err) {
+            callback(err);
+        } else {
+            callback(null);
+        }
+    });
+}
+
+/*** Application Initilize *** */
+function initApp() {
+    // Router init
+    initCommonMiddleware();
+    /// Error handling init
+    initErrorHandle();
+    /***init application listen **/
+    initConfiguration(function (err, responses) {
+        if (err) {
+            console.log('please check configuration file postgres can not connect with database');
+        } else {
+            var port = process.env.PORT || 8081;
+            app.listen(port, function () {
+                console.log("-------------- PrePay Credit Application starting-----------".inverse);
+                console.log('Server listening on port %s '.green, port);
+                console.log('Application start sucesfully'.rainbow);
+            });
+        }
+    });
+}
+
+initApp();

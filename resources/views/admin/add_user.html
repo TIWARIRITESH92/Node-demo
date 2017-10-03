@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.7
+Version: 4.7.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> 
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Prepay-credit |Admin Add user</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="Preview page of Metronic Admin Theme #1 for managed datatable samples" name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href="/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME LAYOUT STYLES -->
+        <link href="/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
+
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+        <div class="page-wrapper">
+            <!-- BEGIN HEADER -->
+            <% include ../admin/common/header.html %>
+            <!-- END HEADER -->
+            <!-- BEGIN HEADER & CONTENT DIVIDER -->
+            <div class="clearfix"> </div>
+            <!-- END HEADER & CONTENT DIVIDER -->
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                <!-- BEGIN SIDEBAR -->
+                <% include ../admin/common/sidebar.html %>
+                <!-- END SIDEBAR -->
+                  <!-- BEGIN CONTENT -->
+                <div class="page-content-wrapper">
+                    <!-- BEGIN CONTENT BODY -->
+                    <div class="page-content">
+                        <!-- BEGIN PAGE HEADER-->
+                       
+                        <!-- BEGIN PAGE BAR -->
+                        <div class="page-bar">
+                            <ul class="page-breadcrumb">
+                                <li>
+                                    <a href="index.html">Home</a>
+                                    <i class="fa fa-circle"></i>
+                                </li>
+                                <li>
+                                    <span>Form Stuff</span>
+                                </li>
+                            </ul>
+                            <div class="page-toolbar">
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn green btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"> Actions
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-bell"></i> Action</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-shield"></i> Another action</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-user"></i> Something else here</a>
+                                        </li>
+                                        <li class="divider"> </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-bag"></i> Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PAGE BAR -->
+                        <!-- BEGIN PAGE TITLE-->
+                        <h1 class="page-title"> Form Layouts
+                            <small>form layouts</small>
+                        </h1>
+                        <!-- END PAGE TITLE-->
+                        <!-- END PAGE HEADER-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tabbable-line boxless tabbable-reversed">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#tab_0" data-toggle="tab"> Add user </a>
+                                        </li>
+                                    </ul>
+
+                                                <% if (typeof errors == 'object' && errors) { %>
+                                                   <% errors.forEach(function(error){ %>
+                                                      <div class="alert alert-danger">
+                                                          <button class="close"></button>
+                                                          <%= error['msg'] %>
+                                                      </div>
+                                                      
+                                                    <% })%>
+                                                    <% } %>
+                                                    <% if(typeof admin_email_exists !== 'undefined'){ %>
+                                                        <div class="alert alert-danger">
+                                                            <button class="close" data-close="alert"></button>
+                                                            <span><%= admin_email_exists %> </span>
+                                                        </div>
+                                                     <% } %>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_0">
+                                            <div class="portlet box green">
+                                                <div class="portlet-title">
+                                                    <div class="caption">
+                                                        <i class="fa fa-user"></i>Add user</div>
+                                                    
+                                                </div>
+                                                 
+                                                <div class="portlet-body form">
+                                                    <!-- BEGIN FORM-->
+                                                    <form method="post" action="/admin/adduserDetail" id="user_creation_form" class="form-horizontal">
+                                                        <div class="form-body">
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Firstname</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="text" class="form-control input-circle" placeholder="Enter firstname" name="firstname" value="<% if (typeof param == 'object' && param.firstname){%><%= param.firstname  %><% } %>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Surname</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="text" class="form-control input-circle" placeholder="Enter surname" name="surname" value="<% if (typeof param == 'object' && param.surname){%><%= param.surname  %><% } %>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Admin email</label>
+                                                                <div class="col-md-4">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon input-circle-left">
+                                                                            <i class="fa fa-envelope"></i>
+                                                                        </span>
+                                                                        <input type="email" class="form-control input-circle-right" placeholder="Admin Email Address" name="admin_email" value="<% if (typeof param == 'object' && param.admin_email){%><%= param.admin_email  %><% } %>"> </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Invoicing​ ​email​</label>
+                                                                <div class="col-md-4">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon input-circle-left">
+                                                                            <i class="fa fa-envelope"></i>
+                                                                        </span>
+                                                                        <input type="email" class="form-control input-circle-right" placeholder="Invoicing​ Email Address" name="invoice_email" value="<% if (typeof param == 'object' && param.invoice_email){%><%= param.invoice_email  %><% } %>"> </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Company Name</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="text" class="form-control input-circle" placeholder="Enter company name" name="company_name" value="<% if (typeof param == 'object' && param.company_name){%><%= param.company_name  %><% } %>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Company Address1</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="text" class="form-control input-circle" placeholder="Enter company address 1" name="company_address_1" value="<% if (typeof param == 'object' && param.company_address_1){%><%= param.company_address_1  %><% } %>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Company Address2</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="text" class="form-control input-circle" placeholder="Enter company address 2" name="company_address_2" value="<% if (typeof param == 'object' && param.company_address_2){%><%= param.company_address_2  %><% } %>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Town</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="text" class="form-control input-circle" placeholder="Enter town" name="town" value="<% if (typeof param == 'object' && param.town){%><%= param.town  %><% } %>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Country</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="text" class="form-control input-circle" placeholder="Enter country" name="country" value="<% if (typeof param == 'object' && param.country){%><%= param.country  %><% } %>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Postcode</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="text" class="form-control input-circle" placeholder="Enter postcode" name="postcode" value="<% if (typeof param == 'object' && param.postcode){%><%= param.postcode  %><% } %>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Phone</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="text" class="form-control input-circle" placeholder="Enter phone" name="phone" value="<% if (typeof param == 'object' && param.phone){%><%= param.phone  %><% } %>">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Support ​email​</label>
+                                                                <div class="col-md-4">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon input-circle-left">
+                                                                            <i class="fa fa-envelope"></i>
+                                                                        </span>
+                                                                        <input type="email" class="form-control input-circle-right" placeholder="Support Email Address" name="support_email" value="<% if (typeof param == 'object' && param.support_email){%><%= param.support_email  %><% } %>"> </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">Password</label>
+                                                                <div class="col-md-4">
+                                                                    <div class="input-group">
+                                                                        <input type="password" class="form-control input-circle-left" placeholder="Password" name="password">
+                                                                        <span class="input-group-addon input-circle-right">
+                                                                            <i class="fa fa-user"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            
+                                               </div>
+
+                                                        <div class="form-actions">
+                                                            <div class="row">
+                                                                <div class="col-md-offset-3 col-md-9">
+                                                                    <button type="submit" class="btn btn-circle green">Submit</button>
+                                                                    <button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <!-- END FORM-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END CONTENT BODY -->
+                </div>
+                <!-- END CONTENT -->
+                <!-- BEGIN QUICK SIDEBAR -->
+               
+                <!-- END QUICK SIDEBAR -->
+            </div>
+            <!-- END CONTAINER -->
+            <!-- BEGIN FOOTER -->
+            <% include ../admin/common/footer.html %>
+            <!-- END FOOTER -->
+        </div>
+        <!-- BEGIN QUICK NAV -->
+        
+        <div class="quick-nav-overlay"></div>
+        
+        <!-- END QUICK NAV -->
+        <!--[if lt IE 9]>
+<script src="../assets/global/plugins/respond.min.js"></script>
+<script src="../assets/global/plugins/excanvas.min.js"></script> 
+<script src="../assets/global/plugins/ie8.fix.min.js"></script> 
+<![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+        <script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="/assets/global/scripts/datatable.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="/assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
+        <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="/assets/pages/scripts/uservalidation.js" type="text/javascript"></script>
+        
+        <script>
+            $(document).ready(function()
+            {
+                $(".date-picker").datepicker();
+                $('#clickmewow').click(function()
+                {
+                    $('#radio1003').attr('checked', 'checked');
+                });
+                
+            })
+        </script>
+    </body>
+
+</html>
